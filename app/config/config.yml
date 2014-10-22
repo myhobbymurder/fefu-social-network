@@ -70,9 +70,14 @@ swiftmailer:
     spool:     { type: memory }
 
 hwi_oauth:
-     firewall_name: secured_area
-     resource_owners:
-         instagram:
-             type: instagram
-             client_id: d4aadcb9924a4ec3ad5cbd5b2efc9f18
-             client_secret: 16f39b3eed154ad39c03334029da83e7
+    firewall_name: secured_area
+    connect:
+        confirmation: true
+        account_connector: network.userprovider
+    resource_owners:
+        instagram:
+            type: instagram
+            client_id: d4aadcb9924a4ec3ad5cbd5b2efc9f18
+            client_secret: 16f39b3eed154ad39c03334029da83e7
+
+

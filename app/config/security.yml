@@ -2,8 +2,8 @@ security:
     providers:
         in_memory:
                     memory: ~
-        _hwi_provider:
-                    id: network.oauthprovider
+        hwi_provider:
+                    id: network.userprovider
     firewalls:
          dev:
                     pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -13,13 +13,15 @@ security:
                     anonymous: ~
 
          secured_area:
-                    anonymous: ~
-                    oauth:
-                        resource_owners:
-                            instagram: "login/check-instagram"
-                        login_path:        /login
-                        use_forward:       false
-                        failure_path:      /login
+               anonymous: ~
+               oauth:
+                 resource_owners:
+                    instagram:  instagram_login
+                 login_path: hwi_oauth_connect
+                 use_forward: false
+                 failure_path: hwi_oauth_connect
+                 oauth_user_provider:
+                     service: network.userprovider
+    access_control:
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
-                        oauth_user_provider:
-                            service: network.oauthprovider

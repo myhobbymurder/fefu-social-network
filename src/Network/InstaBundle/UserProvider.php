@@ -2,26 +2,27 @@
 /**
  * Created by PhpStorm.
  * User: user
- * Date: 15.10.2014
- * Time: 21:09
+ * Date: 22.10.2014
+ * Time: 22:14
  */
 
-namespace Network\InstaBundle\Controller;
+namespace Network\InstaBundle;
 
-
-use HWI\Bundle\OAuthBundle\Connect\AccountConnectorInterface;
+use Doctrine\ORM\EntityRepository;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
-use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use Network\StoreBundle\Entity\User;
 use OAuthToken;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
+use HWI\Bundle\OAuthBundle\Connect\AccountConnectorInterface;
 
-class OAuthProvider implements UserProviderInterface, OAuthAwareUserProviderInterface, AccountConnectorInterface
-{
-    private $userModel;
+
+class UserProvider extends EntityRepository implements UserProviderInterface, OAuthAwareUserProviderInterface,
+    AccountConnectorInterface {
+
     /**
      * Loads the user for the given username.
      *
@@ -61,7 +62,7 @@ class OAuthProvider implements UserProviderInterface, OAuthAwareUserProviderInte
             throw new UnsupportedUserException();
         }
 
-        return $this->userModel->findById($user->getId());
+        return $this->find($user->getId());
     }
 
     /**
@@ -84,7 +85,7 @@ class OAuthProvider implements UserProviderInterface, OAuthAwareUserProviderInte
      */
     public function findByToken($type, $username)
     {
-        $qb = $this->userModel->createQueryBuilder('u');
+        $qb = $this->createQueryBuilder('u');
         $qb->join('u.oauthTokens', 't')->addSelect('t');
         $qb->where('t.type = :type AND t.username = :username');
         $qb->setParameters([
@@ -112,10 +113,10 @@ class OAuthProvider implements UserProviderInterface, OAuthAwareUserProviderInte
         if ($user === null) {
             throw new UsernameNotFoundException('User not found');
         }
-        $token = $user->getOAuthTokenByType($type);
-        $token->setOAuthUserResponse($response);
-        $this->userModel->_em->persist($token);
-        $this->userModel->_em->flush();
+        $token = $user->$this->getOAuthTokenByType($type);
+        $token->$this->setOAuthUserResponse($response);
+        $this->_em->persist($token);
+        $this->_em->flush();
 
         return $user;
     }
@@ -130,7 +131,12 @@ class OAuthProvider implements UserProviderInterface, OAuthAwareUserProviderInte
     {
         $token = new OAuthToken($response);
         $token->setUser($user);
-        $this->userModel->_em->persist($token);
-        $this->userModel->_em->flush();
+        $this->_em->persist($token);
+        $this->_em->flush();
+    }
+
+    function __construct()
+    {
+        // TODO: Implement __construct() method.
     }
 }

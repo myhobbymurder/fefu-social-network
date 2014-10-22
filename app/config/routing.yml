@@ -16,13 +16,18 @@ homepage:
     requirements:
         _method: GET
 
-hwi_oauth_redirect:
+oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /connect
+    prefix: /connect
 
-hwi_oauth_login:
+oauth_login:
     resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix:   /login
+    prefix: /login
+
+oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login
 
 instagram_login:
     pattern: /login/check-instagram
+    defaults: { _controller: NetworkInstaBundle:CheckLogin:getCode }
