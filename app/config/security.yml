@@ -1,12 +1,25 @@
 security:
     providers:
         in_memory:
-            memory: ~
-
+                    memory: ~
+        _hwi_provider:
+                    id: network.oauthprovider
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+         dev:
+                    pattern: ^/(_(profiler|wdt)|css|images|js)/
+                    security: false
 
-        default:
-            anonymous: ~
+         default:
+                    anonymous: ~
+
+         secured_area:
+                    anonymous: ~
+                    oauth:
+                        resource_owners:
+                            instagram: "login/check-instagram"
+                        login_path:        /login
+                        use_forward:       false
+                        failure_path:      /login
+
+                        oauth_user_provider:
+                            service: network.oauthprovider

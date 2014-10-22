@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Network\StoreBundle\NetworkStoreBundle(),
             new Network\WebBundle\NetworkWebBundle(),
+            new Network\InstaBundle\NetworkInstaBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

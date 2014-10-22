@@ -1,3 +1,7 @@
+network_insta:
+    resource: "@NetworkInstaBundle/Resources/config/routing.yml"
+    prefix:   /
+
 network_web:
     resource: "@NetworkWebBundle/Resources/config/routing.yml"
     prefix:   /
@@ -6,3 +10,19 @@ network_store:
     resource: "@NetworkStoreBundle/Resources/config/routing.yml"
     prefix:   /
 
+homepage:
+    path:  /
+    defaults: { _controller: NetworkWebBundle:Default:index }
+    requirements:
+        _method: GET
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+instagram_login:
+    pattern: /login/check-instagram

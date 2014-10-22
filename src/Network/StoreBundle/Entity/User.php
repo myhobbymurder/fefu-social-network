@@ -2,7 +2,9 @@
 
 namespace Network\StoreBundle\Entity;
 
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * user
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends EntityRepository implements UserInterface
 {
     /**
      * @var integer
@@ -24,9 +26,9 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=100)
+     * @ORM\Column(name="username", type="string", length=100)
      */
-    private $login;
+    private $username;
 
     /**
      * @var string
@@ -38,15 +40,36 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=15)
+     * @ORM\Column(name="salt", type="string", length=40)
      */
     private $salt;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=20)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=20)
+     */
+    private $lastName;
+
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="birthday", type="date", nullable=true)
+     */
+    private $birthday;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -54,14 +77,14 @@ class User
     }
 
     /**
-     * Set login
+     * Set username
      *
-     * @param string $login
+     * @param string $username
      * @return user
      */
-    public function setLogin($login)
+    public function setUsername($username)
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
@@ -69,11 +92,11 @@ class User
     /**
      * Get login
      *
-     * @return string 
+     * @return string
      */
-    public function getLogin()
+    public function getUsername()
     {
-        return $this->login;
+        return $this->username;
     }
 
     /**
@@ -92,7 +115,7 @@ class User
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -115,10 +138,78 @@ class User
     /**
      * Get salt
      *
-     * @return string 
+     * @return string
      */
     public function getSalt()
     {
         return $this->salt;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param \Network\StoreBundle\Entity\date $birthday
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+    }
+
+    /**
+     * @return \Network\StoreBundle\Entity\date
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {}
+
+    public function findById($id)
+    {
+        $qb = $this->createQueryBuilder('user');
+        $qb->select('temp');
+        $qb->where('temp.id = :id');
+        $qb->setParameters([
+                'id'     => $id
+            ]);
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
 }

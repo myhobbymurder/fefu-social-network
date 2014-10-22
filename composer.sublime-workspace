@@ -1,0 +1,332 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"s_",
+				"s_arr"
+			],
+			[
+				"s",
+				"s_arr"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 381.0,
+		"selected_items":
+		[
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"S",
+				"Set Syntax: PHP"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 736.0
+	},
+	"console":
+	{
+		"height": 466.0,
+		"history":
+		[
+			"install Package Control: Install Package",
+			"install Packege Control: Install Packege",
+			"install",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/user/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
+		"/C/Server/web/apache/conf/extra/httpd-vhosts.conf",
+		"/C/Server/web/apache/conf/httpd.conf",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Application/MyApplication.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Activities/SettingsActivity.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Models/DB/ConfigRecords.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/res/xml/preferences.xml",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU/app/src/main/java/ru/farpost/fefu/app/Models/RESTful/Service/ServiceHelperBase.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU/app/src/main/java/ru/farpost/fefu/app/Fragments/UpdateFragment.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Fragments/UpdateFragment.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Models/RESTful/Service/NotificationUtils.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/build.gradle",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Fragments/ScheduleFragment.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Models/RESTful/Service/RestService.java",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_back/app/src/main/java/ru/farpost/fefu/app/Activities/MainActivity.java",
+		"/C/Server/web/php/php.ini",
+		"/C/Server/server_run.bat",
+		"/C/Server/server_stop.bat",
+		"/C/Server/domains/symfony2/fefu-social-network/fefu-social-network/web/config.php",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU/app/build.gradle",
+		"/C/Server/ssh/key.pub.pub",
+		"/C/Users/user/Downloads/wifi.bat.txt",
+		"/C/Server/domains/symfony2/fefu-social-network/fefu-social-network/composer.json",
+		"/C/Server/ssh/key.pub",
+		"/C/Server/web/apache/conf/extra/httpd-mpm.conf",
+		"/C/Server/web/apache/conf/extra/httpd-autoindex.conf",
+		"/C/Server/web/apache/conf/extra/httpd-manual.conf",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/user/Desktop/путь.txt",
+		"/C/Server/domains/localhost/public/index.php",
+		"/C/Server/server_run.but",
+		"/C/Server/server_stop.but",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU_old/app/src/main/java/com/farpost/fefu/app/Activities/SettingsActivity.java",
+		"/C/Server/web/mysql/my-default.ini",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU/build.gradle",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/011.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/compiler/input.c",
+		"/C/Users/user/Downloads/naiveBayes.py",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/011.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/04.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/09.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/09.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/010.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/010.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/07.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/test_all.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/02.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/05.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/05.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/01.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/06.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/07.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/08.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/08.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/01.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/02.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/04.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/05.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/07.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/07.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/01.asm",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/02.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/01.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/04.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/02.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(subexpression propagtion)/03.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/runL.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/01.out",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/Debug/runL.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/Debug/01.out",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/Debug/01.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/Debug/run_all.but",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/Debug/out.out",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (expr)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/optimization(loop merging)/03.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (int)/test_all.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/test_all.bat",
+		"/C/Users/user/Downloads/main.cpp",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (int)/04.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/test_all.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/13.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (int)/02.tst",
+		"/C/Users/user/code/php/php.ini-production",
+		"/C/Users/user/code/php/php.ini-development",
+		"/C/Users/user/code/php/Symfony/web/app_dev.php",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/TEST_ALL_CODE_GEN.BAT",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/gen_optmz_and_no_optmz.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/del_optmz_and_no_optmz.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/ALL_del_optmz_and_no_optmz.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (int)/58.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/01.c",
+		"/F/chess/chess.cpp",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/05.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/07.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/04.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/06.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/02.c",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/01.out",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (struct)/01'.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/01.с",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/test_all.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/input.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/run.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/input.txt",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/complex/gen.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/compiler/input.txt",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (float)/run.bat",
+		"/C/Users/user/code/java/android/android_studio/projects/FEFU/app/src/main/java/com/farpost/fefu/app/Models/RESTful/Service/RestService.java",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/code gen (stmt)/08.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (types)/v08.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (types checking)/u09.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/r01.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/w06.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/w.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/lexer/test_all.bat",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/lexer/TEST_RESULT.log",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/i04.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/k02.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (stmts)/b04.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (expr)/08.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (expr)/16.etl",
+		"/C/Users/user/Documents/Visual Studio 2013/Projects/compiler/tests/parser (expr)/20.etl",
+		"/D/storage/asus/books/compil/tests/parser (stmts)/w07.etl"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"intl",
+			"openssl",
+			"\"",
+			"ssl",
+			"php",
+			"htdocs",
+			"php",
+			"extension",
+			"short_open_tag",
+			"”",
+			"AddHa",
+			"php5",
+			"17"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "composer.sublime-project",
+	"replace":
+	{
+		"height": 74.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 188.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
