@@ -137,9 +137,9 @@ class ContentLoader extends PageRequestor {
                 $em->persist($mp3);
                 $record = new MP3Record();
                 $record->addUser($user);
-                $record->setFile($mp3);
-                $record->setUploaded(new \DateTime());
-                $record->setSong($song);
+                $record->setFile($mp3)
+                       ->setUploaded(new \DateTime())
+                       ->setSong($song);
                 $em->persist($record);
             }
 
