@@ -47,9 +47,8 @@ class TaskExecutor extends PageRequestor
                          ->andWhere(':timestamp - t.lastUpdateTimestamp > 82800')
                          ->setParameter('timestamp', (new \DateTime('now'))->getTimestamp()) ;
         $pages = self::countPages($countQuery, static::PAGE_SIZE);
-        $i = 1;
         $now = new \DateTime('now');
-        while ($i <= $pages) {
+        for ($i = 1; $i <= $pages; ++$i) {
             $page = self::paginate($query, static::PAGE_SIZE, $i);
             $tasks = $page->getQuery()
                           ->getResult();
@@ -84,12 +83,12 @@ class TaskExecutor extends PageRequestor
                     }
                     $getter = 'get';
                     foreach ($scheduleParams as $p) {
-                        $pathGetter = $getter.$p;
+                        $pathGetter = $getter . $p;
                         $params[$p] = $task->$pathGetter();
                     }
                     $headers = array();
                     foreach ($header as $h) {
-                        $pathGetter = $getter.self::constructHeaderName($h);
+                        $pathGetter = $getter . self::constructHeaderName($h);
                         $headers[$h] = $task->$pathGetter();
                     }
                     $arr = $executor->request($endpoint['method'], $endpoint['url'], $headers, $params);
@@ -115,7 +114,6 @@ class TaskExecutor extends PageRequestor
                 $em->flush();
                 $em->clear();
             }
-            $i++;
         }
         $loader->loadContent();
     }
