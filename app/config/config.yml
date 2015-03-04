@@ -213,3 +213,25 @@ services:
 fp_open_id:
     db_driver: orm
     identity_class: Network\StoreBundle\Entity\OpenIdIdentity
+
+old_sound_rabbit_mq:
+    connections:
+        content_fetching:
+            host:     'localhost'
+            port:     5672
+            user:     'guest'
+            password: 'guest'
+            vhost:    '/'
+            lazy:     false
+
+    producers:
+        fetch_content:
+            connection:       content_fetching
+            exchange_options: {name: 'fetch-content', type: direct}
+
+    consumers:
+        fetch_content:
+            connection:       content_fetching
+            exchange_options: {name: 'fetch-content', type: direct}
+            queue_options:    {name: 'fetch-content'}
+            callback:         network_import.fetch_content_consumer_service

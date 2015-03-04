@@ -37,7 +37,7 @@ class ContentLoader extends PageRequestor {
         $this->container = $container;
     }
 
-    private function getItemContent($item)
+    public function getItemContent($item)
     {
         $resourceOwner = $item->getResourceOwner();
         $owner = $item->getOwnerId();
@@ -144,6 +144,7 @@ class ContentLoader extends PageRequestor {
             }
 
         }
+        $item->setStatus(self::$loadedStatus);
 }
 
     public function loadContent()
@@ -163,15 +164,10 @@ class ContentLoader extends PageRequestor {
                 $i = 1;
                 while ($i <= $pages) {
                     $page = self::paginate($query, static::PAGE_SIZE, $i);
-                    $items = $page->getQuery()
-                                  ->getResult();
-                    foreach ($items as $item) {
-                        //TODO install message queue server
-                        self::getItemContent($item);
-                        $item->setStatus(self::$loadedStatus);
-                    }
-                    $em->flush();
-                    $em->clear();
+                    $itemsDQL = $page->getQuery()->getDQL();
+                    $this->container
+                         ->get('old_sound_rabbit_mq.fetch_content_producer')
+                         ->publish($itemsDQL);
                     ++$i;
                 }
                 if ($pages) {

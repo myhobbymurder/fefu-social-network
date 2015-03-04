@@ -34,7 +34,7 @@ class TaskExecutor extends PageRequestor
         $em = $this->container->get('doctrine')->getManager();
         $executor = $this->container->get('request_executor');
         $processor = $this->container->get('response_processor');
-        $loader = $this->container->get('content_loader');
+        $loader = $this->container->get('network_import.content_loader');
         $endpoints = $this->container->getParameter('endpoints');
         $query = $em->createQueryBuilder()
                     ->select('t')
