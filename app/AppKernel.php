@@ -40,6 +40,7 @@ class AppKernel extends Kernel
             new Network\ImportBundle\NetworkImportBundle(),
             new Network\OpenIdBundle\NetworkOpenIdBundle(),
             new Fp\OpenIdBundle\FpOpenIdBundle(),
+            new OldSound\RabbitMqBundle\OldSoundRabbitMqBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

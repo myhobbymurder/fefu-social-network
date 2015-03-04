@@ -29,7 +29,8 @@
         "phansys/getid3": "2.1.*@dev",
         "sonata-project/formatter-bundle": "~2.3",
         "sonata-project/media-bundle": "~2.3",
-        "fp/openid-bundle": "dev-master"
+        "fp/openid-bundle": "dev-master",
+        "oldsound/rabbitmq-bundle": "1.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
