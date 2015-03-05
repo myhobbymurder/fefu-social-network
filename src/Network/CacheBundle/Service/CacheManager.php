@@ -46,6 +46,7 @@ class CacheManager
     public function refreshRoute($request)
     {
         $this->cache->handle($request);
+
         return $this;
     }
 }

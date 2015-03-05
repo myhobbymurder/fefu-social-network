@@ -28,6 +28,7 @@ abstract class ReverseProxyCache extends HttpCache
         if (null === $this->eventDispatcher) {
             $this->eventDispatcher = new EventDispatcher();
         }
+
         return $this->eventDispatcher;
     }
 
