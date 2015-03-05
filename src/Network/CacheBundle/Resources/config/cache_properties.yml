@@ -1,0 +1,54 @@
+network_cache:
+    cache_dependencies:
+    #albums
+        user_add_album:
+            dependent:
+                - user_show_albums
+                - user_profile_show_albums
+        user_delete_album:
+            dependent:
+                - user_show_albums
+                - user_profile_show_albums
+        user_edit_album:
+            dependent:
+                - user_show_albums
+                - user_profile_show_albums
+        user_add_album_photo:
+            dependent:
+                - user_show_album
+        user_delete_album_photo:
+            dependent:
+                - user_show_album
+
+    #profile
+        user_edit_community:
+            dependent:
+                - user_profile_show_community
+                - user_profile_community
+                - user_show_community
+        user_join_community:
+            dependent:
+                - user_profile_show_community
+                - user_profile_community
+                - user_show_community
+        user_go_out_community:
+            dependent:
+                - user_profile_show_community
+                - user_profile_community
+                - user_show_community
+        user_delete_community:
+             dependent:
+                - user_profile_show_community
+                - user_profile_community
+                - user_show_community
+        fos_user_change_email:
+             dependent:
+                 - user_profile
+        user_edit_contact:
+             dependent:
+                 - user_profile
+        user_delete_friendship:
+             dependent:
+                 - user_profile
+                 - user_profile_show_friends
+                 - user_show_friends
