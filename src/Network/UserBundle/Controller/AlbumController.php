@@ -2,6 +2,7 @@
 
 namespace Network\UserBundle\Controller;
 
+use Network\CacheBundle\Utils\CacheTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Network\UserBundle\Form\Type\AlbumType;
 use Network\UserBundle\Form\Type\PhotoType;
@@ -14,6 +15,7 @@ use Application\Sonata\MediaBundle\Entity\Gallery;
 class AlbumController extends Controller
 {
     use ProfileTrait;
+    use CacheTrait;
 
     public function showAlbumAction($id, $albumId)
     {
@@ -38,13 +40,15 @@ class AlbumController extends Controller
 
         $isCurUserAlbum = $this->getDoctrine()->getRepository('NetworkStoreBundle:UserGallery')->isUserAlbum($this->getUser()->getId(), $albumId);
 
-        return $this->render('NetworkUserBundle:Albums:album.html.twig', [
+        $response =  $this->render('NetworkUserBundle:Albums:album.html.twig', [
             'id' => $id,
             'is_cur_user' => $this->getUser()->getId() == $id,
             'is_user_album' => $isCurUserAlbum,
             'album' => $album,
             'photos' => $galleryHasMedia->findByGallery($albumId),
         ]);
+
+        return self::setCache($response);
     }
 
     public function editAlbumAction(Request $request)
@@ -79,6 +83,7 @@ class AlbumController extends Controller
             $em->flush();
 
             $url = $this->generateUrl('user_show_albums', ['id' => $userId]);
+            self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $userId ));
 
             return new RedirectResponse($url);
         }
@@ -114,6 +119,8 @@ class AlbumController extends Controller
             $msg = 'msg.user_album_deleted';
         }
 
+        self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
+
         return $this->render('NetworkWebBundle:User:msg.html.twig', [
             'msg' => $msg
         ]);
@@ -128,6 +135,7 @@ class AlbumController extends Controller
 
         if ($form->isValid()) {
             $newAlbum = new Gallery();
+
             $data = $form->getData();
             $newAlbum->setName($data->getName())
                      ->setContext('default')
@@ -142,7 +150,6 @@ class AlbumController extends Controller
             $em->persist($newAlbum);
             $em->persist($userAlbum);
             $em->flush();
-
             $user->addAlbum($userAlbum);
 
             $userManager = $this->get('fos_user.user_manager');
@@ -150,6 +157,7 @@ class AlbumController extends Controller
 
             $url = $this->generateUrl('user_show_albums', ['id' => $user->getId()]);
             $response = new RedirectResponse($url);
+            self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId()));
 
             return $response;
         }
@@ -199,6 +207,11 @@ class AlbumController extends Controller
 
             $url = $this->generateUrl('user_show_album', ['id' => $userId, 'albumId' => $albumId]);
             $response = new RedirectResponse($url);
+            self::notifyCacheInvalidate($this->get('request')->get('_route'),
+                array(
+                    'id' => $userId,
+                    'albumId' => $albumId,
+                ));
 
             return $response;
         }
@@ -231,6 +244,12 @@ class AlbumController extends Controller
                 $msg = 'msg.user_album_photo_deleted';
             }
         }
+
+        self::notifyCacheInvalidate($this->get('request')->get('_route'),
+            array(
+                'id' => $userId,
+                'albumId' => $albumId,
+            ));
 
         return $this->render('NetworkWebBundle:User:msg.html.twig', ['msg' => $msg]);
     }

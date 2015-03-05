@@ -2,6 +2,7 @@
 
 namespace Network\UserBundle\Controller;
 
+use Network\CacheBundle\Utils\CacheTrait;
 use Network\StoreBundle\DBAL\TypeCommunityEnumType;
 use Network\StoreBundle\DBAL\RoleCommunityEnumType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,12 +15,13 @@ use Network\UserBundle\Form\Type\CreateCommunityType;
 class CommunityController extends Controller
 {
     use ProfileTrait;
+    use CacheTrait;
     
     public function goOutCommunityAction($id)
     {
         $user = $this->getUser();
         $msg = $this->get('network.store.community_service')->excludeUser($user, $id, 'go_out');
-       
+        self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
         return $this->render('NetworkWebBundle:User:msg.html.twig', [
             'msg' => $msg
         ]);
@@ -29,7 +31,7 @@ class CommunityController extends Controller
     {
         $user = $this->getUser();
         $msg = $this->get('network.store.community_service')->deleteCommunity($user, $id);
-                
+        self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
         return $this->render('NetworkWebBundle:User:msg.html.twig', [
             'msg' => $msg
         ]);
@@ -39,7 +41,7 @@ class CommunityController extends Controller
     {
         $user = $this->getUser();
         $msg = $this->get('network.store.community_service')->joinCommunity($user, $id);
-               
+        self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
         return $this->render('NetworkWebBundle:User:msg.html.twig', [
             'msg' => $msg
         ]);
@@ -149,19 +151,21 @@ class CommunityController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $community = $communityService->createCommunity($community, $user);
-    
+                self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $curUser->getId() ));
                 return $this->redirect( $this->generateUrl('user_edit_community', ['id' => $community->getId()]));
             }
             $hasForm = true;
         }
         
-        return $this->render('NetworkUserBundle:Profile:community.html.twig', [
+        $response = $this->render('NetworkUserBundle:Profile:community.html.twig', [
             'user' => $user,
             'communities' => $communities,
             'form' => $form->createView(),
             'is_error_form' => $hasForm,
             'is_cur_user' => $isCurUser
         ]);
+
+        return self::setCache($response);
     }
     
     public function editCommunityAction($id, Request $request)
@@ -182,7 +186,7 @@ class CommunityController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $community = $communityService->updateCommunity($community, $isClose);
-                
+                self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
                 return $this->redirect( $this->generateUrl('user_show_community', ['id' => $community->getId()]));
             }
         }
@@ -218,7 +222,7 @@ class CommunityController extends Controller
         list ($friends_invitee, $ans_friends, $participants, $asking) 
                 = $communityService->showCommunity($id, $user);
         
-        return $this->render('NetworkUserBundle:Profile:show_community.html.twig', [
+        $response = $this->render('NetworkUserBundle:Profile:show_community.html.twig', [
             'user' => $user,
             'community' => $community,
             'is_role' => $isRole,
@@ -228,6 +232,8 @@ class CommunityController extends Controller
             'asking' => $asking,
             'participants' => $participants
         ]);
+
+        return self::setCache($response);
     }
     
 }

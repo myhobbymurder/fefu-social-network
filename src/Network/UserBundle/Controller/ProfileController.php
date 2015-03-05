@@ -13,6 +13,7 @@ namespace Network\UserBundle\Controller;
 
 use FOS\UserBundle\Controller\ProfileController as BaseController;
 use FOS\UserBundle\Model\UserInterface;
+use Network\CacheBundle\Utils\CacheTrait;
 use Network\UserBundle\Form\Type\ContactInfoType;
 use Network\StoreBundle\DBAL\RelationshipStatusEnumType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -21,6 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProfileController extends BaseController
 {
     use ProfileTrait;
+    use CacheTrait;
 
     public function showAction()
     {
@@ -50,11 +52,13 @@ class ProfileController extends BaseController
             $fsStatus = $rels->getRelationshipForUser($curUser->getId(), $user->getId())->getStatus();
         }
 
-        return $this->render('NetworkUserBundle:Profile:show.html.twig', [
+        $response = $this->render('NetworkUserBundle:Profile:show.html.twig', [
             'user' => $user,
             'rl_status' => $fsStatus,
             'is_cur_user' => $isCurUser
         ]);
+
+        return self::setCache($response);
     }
 
     public function showFriendsAction($id)
@@ -72,13 +76,15 @@ class ProfileController extends BaseController
             $isCurUser = ($curUser->getId() === $user->getId());
         }
 
-        return $this->render('NetworkUserBundle:Profile:friends.html.twig', [
+        $response = $this->render('NetworkUserBundle:Profile:friends.html.twig', [
             'is_cur_user' => $isCurUser,
             'user_id' => $user->getId(),
             'friends' => $rels->findFriendsForUser($user->getId()),
             'subscribers' => $rels->findSubscribersForUser($user->getId()),
             'subscribed_on' => $rels->findSubscribedOnForUser($user->getId())
         ]);
+
+        return self::setCache($response);
     }
 
     public function showProfileFriendsAction()
@@ -94,7 +100,7 @@ class ProfileController extends BaseController
     public function manageFriendshipRequestsAction()
     {
         $rels = $this->getDoctrine()->getRepository('NetworkStoreBundle:Relationship');
-
+        self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $this->getUser()->getId() ));
         return $this->render('NetworkUserBundle:Profile:manage_requests.html.twig', [
             'friendship_requests' => $rels->findFriendshipRequestsForUser($this->getUser()->getId())
         ]);
@@ -116,7 +122,7 @@ class ProfileController extends BaseController
             $em = $this->container->get('doctrine')->getManager();
             $em->persist($user->getContactInfo());
             $em->flush();
-
+            self::notifyCacheInvalidate($this->get('request')->get('_route'), array( 'id' => $user->getId() ));
             return $this->redirect($this->generateUrl('user_profile', ['id' => $user->getId()]));
         }
 
@@ -137,7 +143,6 @@ class ProfileController extends BaseController
     {
         $user = $this->getDoctrine()->getRepository('NetworkStoreBundle:User')->find($id);
         if (empty($user)) return $this->redirect($this->generateUrl('mainpage'));
-
         $albums = $this->getDoctrine()->getRepository('NetworkStoreBundle:UserGallery');
 
         $isCurUser = false;
@@ -146,11 +151,13 @@ class ProfileController extends BaseController
             $isCurUser = ($curUser->getId() === $user->getId());
         }
 
-        return $this->render('NetworkUserBundle:Albums:albums.html.twig', [
+        $response = $this->render('NetworkUserBundle:Albums:albums.html.twig', [
             'user_id' => $user->getId(),
             'is_cur_user' => $isCurUser,
             'albums' => $albums->findAlbumsForUser($user->getId()),
         ]);
+
+        return self::setCache($response);
     }
 
 }
