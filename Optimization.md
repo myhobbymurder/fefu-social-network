@@ -38,7 +38,6 @@ You can use following config as performance feature, then you must perform a cle
 </code></pre>
 Invalidation<pre><code>boolean opcache_invalidate ( string $script [, boolean $force = FALSE ] )
 </code></pre>
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
 
 ### Optimizing autoload
 Execute<pre><code>php composer.phar dumpautoload -o

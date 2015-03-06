@@ -48,7 +48,7 @@ class AlbumController extends Controller
             'photos' => $galleryHasMedia->findByGallery($albumId),
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response, false);
     }
 
     public function editAlbumAction(Request $request)

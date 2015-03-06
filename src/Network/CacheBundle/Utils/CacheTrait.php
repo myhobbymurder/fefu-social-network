@@ -30,13 +30,16 @@ trait CacheTrait
         $cacheManager->refreshRoute($request);
     }
 
-    public function setCache($response)
+    public function setCache($response, $public)
     {
-        $response->setPublic()
-            ->setEtag(md5(uniqid()))
+        if ($public) {
+            $response->setPublic();
+        }
+        $response->setEtag(md5(uniqid()))
             ->setLastModified(new \DateTime())
             ->setMaxAge(600)
             ->setSharedMaxAge(600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
 
         return $response;
     }

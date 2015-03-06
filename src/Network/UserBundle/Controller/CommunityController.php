@@ -167,7 +167,7 @@ class CommunityController extends Controller
             'is_cur_user' => $isCurUser
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response, false);
     }
     
     public function editCommunityAction($id, Request $request)
@@ -235,7 +235,7 @@ class CommunityController extends Controller
             'participants' => $participants
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response,  false);
     }
     
 }

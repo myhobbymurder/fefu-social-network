@@ -49,6 +49,8 @@ class ResponseProcessor
         $mediaClass = self::constructItemClass($owner);
         $medias = array();
         $json = json_decode($response, true);
+        $out = new ConsoleOutput();
+        $out->write($jsonRoot);
         if (!isset($json[$jsonRoot])) {
             throw new Exception('WrongRootException');
         }

@@ -58,7 +58,7 @@ class ProfileController extends BaseController
             'is_cur_user' => $isCurUser
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response,  false);
     }
 
     public function showFriendsAction($id)
@@ -84,7 +84,7 @@ class ProfileController extends BaseController
             'subscribed_on' => $rels->findSubscribedOnForUser($user->getId())
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response,  false);
     }
 
     public function showProfileFriendsAction()
@@ -157,7 +157,7 @@ class ProfileController extends BaseController
             'albums' => $albums->findAlbumsForUser($user->getId()),
         ]);
 
-        return self::setCache($response);
+        return self::setCache($response, false);
     }
 
 }
